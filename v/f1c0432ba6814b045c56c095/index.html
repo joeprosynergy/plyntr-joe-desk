@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desk</title>
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --ink: #1f1b16;
+    --muted: #6b645b;
+    --line: #e2dcd2;
+    --card: #fffdf8;
+    --watch: #9a3412;
+    --watch-bg: #ffedd5;
+    --ok: #3f6212;
+    --ok-bg: #ecfccb;
+    --info: #1e3a5f;
+    --info-bg: #e0f2fe;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font: 16px/1.4 "Iowan Old Style", Palatino, Georgia, serif; }
+  header {
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 20px 0;
+  }
+  .brand { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  h1 { font-size: 22px; margin: 0; letter-spacing: -0.02em; }
+  .when { color: var(--muted); font-size: 13px; }
+  nav { display: flex; gap: 4px; margin-top: 14px; overflow-x: auto; }
+  nav button {
+    appearance: none; border: 0; background: transparent;
+    font: inherit; font-size: 14px; color: var(--muted);
+    padding: 8px 12px 12px; cursor: pointer; border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+  nav button[aria-current="true"] { color: var(--ink); border-bottom-color: var(--ink); font-weight: 650; }
+  main { max-width: 980px; margin: 0 auto; padding: 22px 20px 72px; }
+  section { display: none; }
+  section.on { display: block; }
+  .lede { color: var(--muted); margin: 0 0 18px; max-width: 78ch; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .grid.three { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 720px) { .grid, .grid.three { grid-template-columns: 1fr; } }
+  .list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 720px) { .list { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card h3 a { text-decoration: none; border-bottom: 1px solid #c4b8a8; }
+  .card h3 a:hover { border-bottom-color: var(--ink); }
+  .card h3 a::after { content: " \2197"; font-size: 12px; color: var(--muted); }
+  .card p { margin: 0; color: var(--ink); }
+  .card .why { color: var(--muted); margin-top: 6px; font-size: 14px; }
+  .kicker { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 700; }
+  .pill {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 999px; margin-bottom: 8px;
+  }
+  .watch { background: var(--watch-bg); color: var(--watch); }
+  .ok { background: var(--ok-bg); color: var(--ok); }
+  .info { background: var(--info-bg); color: var(--info); }
+  .park { background: #eeeae3; color: var(--muted); }
+  a { color: inherit; text-decoration: underline; text-decoration-color: #c4b8a8; text-underline-offset: 2px; }
+  a:hover { text-decoration-color: var(--ink); }
+  h2 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 26px 0 10px; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 720px) { .split { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <h1>Desk</h1>
+    <div class="when">1 Sep 2026 · 9:40 IST</div>
+  </div>
+  <nav>
+    <button data-tab="today" aria-current="true">Today</button>
+    <button data-tab="pups">MyPuppies</button>
+    <button data-tab="ai">AI shops</button>
+    <button data-tab="india">India partners</button>
+    <button data-tab="offers">Offers</button>
+    <button data-tab="intent">Intent</button>
+  </nav>
+</header>
+<main>
+  <section id="today" class="on">
+    <p class="lede">What needs you. Everything else is a list you can open when you want it.</p>
+    <div class="grid three">
+      <article class="card">
+        <span class="pill info">Today</span>
+        <h3>Jeen · 10:30–12:30</h3>
+        <p>His office. First Agency Brain setup. MOU: free first month, then $200 keep-and-go or $800 for six months. Legal company name still TBD. No Granola notes from prior Jeen meetings.</p>
+        <p class="why">Tomorrow: HIS Career Day (student only). No other work meetings.</p>
+      </article>
+      <article class="card">
+        <span class="pill watch">Runway</span>
+        <h3>Martin’s ~4 weekdays left</h3>
+        <p>Social file booked through 5 Sep (Sat post). Weekdays left from today: Tue–Fri. Under 7. Watch only; no drafts unless you ask.</p>
+        <p class="why">Flag so next week does not run dry.</p>
+      </article>
+      <article class="card">
+        <span class="pill watch">Need you</span>
+        <h3>Saltframe · Dolnai MCC · GitHub</h3>
+        <p>Saltframe recovery-phone change still waiting on your yes (todo due today; mail no longer in inbox). Starred: ads account 453-065-4658 linked to “Dolnai Signup - MCC”. GitHub connector still needs auth. Laurie Make + MailerLite invites still unread.</p>
+        <p class="why">Mission inbox empty. Ads auth OK. Nobody typed in #morning-digest.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="pups">
+    <p class="lede">Who steals puppy demand in the Northeast. Conversion is a thank-you lead, not a sale. Hess is ~80% of supply. Do not attack these names in copy.</p>
+    <h2>Watch</h2>
+    <div class="list">
+      <article class="card"><h3><a href="https://www.gooddog.com/" target="_blank" rel="noopener">Good Dog</a></h3><p>Closest brand. Family breeders, screening. Hess lists here.</p></article>
+      <article class="card"><h3><a href="https://www.puppyspot.com/" target="_blank" rel="noopener">PuppySpot</a></h3><p>National marketplace. Steals paid “puppy for sale” searches.</p></article>
+      <article class="card"><h3><a href="https://www.greenfieldpuppies.com/" target="_blank" rel="noopener">Greenfield Puppies</a></h3><p>NE classifieds. Hess is live on it. Competitor and his channel.</p></article>
+      <article class="card"><h3><a href="https://www.lancasterpuppies.com/" target="_blank" rel="noopener">Lancaster Puppies</a></h3><p>High-volume classifieds. Hess lists here.</p></article>
+      <article class="card"><h3><a href="https://pawrade.com/" target="_blank" rel="noopener">Pawrade</a></h3><p>Broker, not a marketplace. NextDayPets folded into them.</p></article>
+      <article class="card"><h3><a href="https://breederbuddy.com/" target="_blank" rel="noopener">BreederBuddy</a></h3><p>Was a planned partner. Not ready. Now does a similar job a different way.</p><p class="why">Competitor. Not a collaborator.</p></article>
+      <article class="card"><h3><a href="https://www.puppyfinder.com/" target="_blank" rel="noopener">PuppyFinder</a></h3><p>Directory. Already a paid brand-negative in ads.</p></article>
+    </div>
+    <h2>Background</h2>
+    <div class="grid">
+      <article class="card"><h3><a href="https://berrypatchpuppies.com/" target="_blank" rel="noopener">Berry Patch</a></h3><p class="why">Ron’s SEO/design model. Not a marketplace.</p></article>
+      <article class="card"><h3><a href="https://marketplace.akc.org/" target="_blank" rel="noopener">AKC Marketplace</a></h3><p class="why">Hess Samoyeds only. Do not advertise Samoyeds.</p></article>
+      <article class="card"><h3><a href="https://www.puppies.com/" target="_blank" rel="noopener">puppies.com</a></h3><p class="why">Directory. Prospects already list here.</p></article>
+      <article class="card"><h3><a href="https://doodledoods.com/" target="_blank" rel="noopener">DoodleDoods</a> / <a href="https://www.welovedoodles.com/" target="_blank" rel="noopener">We Love Doodles</a></h3><p class="why">Content lists. Hess citations leak here.</p></article>
+    </div>
+  </section>
+
+  <section id="ai">
+    <p class="lede">Shops in our lane: US SMB $1M–$10M, trades, ads + web + a shared brain. AI is plumbing. 8020Brain / Ads2AI / Mike Rhodes are our stack, not rivals.</p>
+    <h2>Closest to us</h2>
+    <div class="list">
+      <article class="card"><span class="pill ok">Closest</span><h3><a target="_blank" rel="noopener" href="https://zephyrai.ai/">ZephyrAI</a></h3><p>Houston. “AIOS / Chief of Staff” on tools the shop already pays for.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://experiencedresults.com/business-brain/">Experienced Results</a></h3><p>Gulf Coast ads/web shop. Sells a “Business Brain” on the client’s account.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://www.homeopshq.com/">HomeOps</a></h3><p>Transformation partner. Uses “AI Operator,” a name we retired.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://www.anwiik.com/">Anwiik</a></h3><p>South Texas “Company Brain.” Named client Emilia’s.</p></article>
+    </div>
+    <h2>Ads plus AI</h2>
+    <div class="grid">
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://sparq.agency/services/ai-automations/">Sparq</a></h3><p class="why">Ads + ops + train for contractors since 2015.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://perstrive.com/ai-implementation">Perstrive</a></h3><p class="why">Ads + AI into Jobber / GHL / ServiceTitan.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://massivelyuseful.ai/">Massively Useful</a></h3><p class="why">$1–3M contractors. New in 2026.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://haibridconsulting.com/home-services">HAIBRID</a></h3><p class="why">Tool wiring + training for $2–15M shops.</p></article>
+    </div>
+    <p class="lede" style="margin-top:18px">Parked: Kudjo, Delegate, Little Big Dog, missed-call / receptionist tools. Crowded there. Thin at a real firm brain plus training.</p>
+  </section>
+
+  <section id="india">
+    <p class="lede">Overflow help, not the next hire. Must sit under Plyntr. Cheap-India pitches are out. No outreach.</p>
+    <div class="list">
+      <article class="card"><span class="pill ok">Ads</span><h3><a target="_blank" rel="noopener" href="https://www.e2msolutions.com/white-label-ppc-services/">E2M</a></h3><p>White-label ads. Agencies only. Best surviving ads name.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://growthnatives.com/agency-partnership/">Growth Natives</a></h3><p>Dedicated pod. HubSpot-heavier than trades ads.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://draftss.com/white-label-for-agency">Draftss</a></h3><p>Silent production. Not a strategist. Mill-quality risk.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://postofficestudios.com/">Post Office Studios</a></h3><p>Premium motion. Campaign work, not weekly tips.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://vortexfilms.in/">Vortex Films</a></h3><p>Premium CGI / post. Same budget caution.</p></article>
+      <article class="card"><h3><a target="_blank" rel="noopener" href="https://advids.co/">Advids</a></h3><p>B2B explainers. SaaS taste, not trades.</p></article>
+    </div>
+    <p class="lede" style="margin-top:18px">Out: whiteDigital, Hustle, OLBUZ (cheap-rate pitch).</p>
+  </section>
+
+  <section id="offers">
+    <p class="lede">Drafts only. Same buyer, same skills. Nothing ships without your yes.</p>
+    <div class="split">
+      <article class="card">
+        <span class="pill ok">Offer</span>
+        <h3>Firm brain, second install</h3>
+        <p>Copy the ProSynergy shape for another firm. Shared brain, one module, train the team.</p>
+        <p class="why">Do not call it AI Operator.</p>
+      </article>
+      <article class="card">
+        <span class="pill ok">Offer</span>
+        <h3>Simplification pass</h3>
+        <p>A paid half-day on a client we already have. Gutter IQ or Martin’s. Not a cold shop.</p>
+        <p class="why">Simple Realign. Summit stays the training ground.</p>
+      </article>
+      <article class="card">
+        <span class="pill park">Hygiene</span>
+        <h3>Read the page before bids</h3>
+        <p>On accounts we already run. Not a new product.</p>
+      </article>
+      <article class="card">
+        <span class="pill park">Hygiene</span>
+        <h3>Breeder inquiry-path check</h3>
+        <p>First hour of a Fast site, or a reason to take the $75 setup. Not its own SKU.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="intent">
+    <p class="lede">Public-web buying signals only. Google, Reddit, official X. No LinkedIn scrape. Drafts only. You send.</p>
+    <article class="card">
+      <span class="pill park">Closed</span>
+      <h3>27 Aug · trial ended</h3>
+      <p>Finite weekday public-intent watch finished. Last useful scan was 24 Aug (empty). Routine deleted; not renewed.</p>
+      <p class="why">No LinkedIn. No drafts outstanding. Morning desk still attaches this file.</p>
+    </article>
+  </section>
+</main>
+<script>
+  const buttons = [...document.querySelectorAll("nav button")];
+  const sections = [...document.querySelectorAll("main section")];
+  function show(id) {
+    buttons.forEach(b => b.setAttribute("aria-current", b.dataset.tab === id ? "true" : "false"));
+    sections.forEach(s => s.classList.toggle("on", s.id === id));
+    history.replaceState(null, "", "#" + id);
+  }
+  buttons.forEach(b => b.onclick = () => show(b.dataset.tab));
+  const start = location.hash.slice(1);
+  if (start && document.getElementById(start)) show(start);
+</script>
+</body>
+</html>
